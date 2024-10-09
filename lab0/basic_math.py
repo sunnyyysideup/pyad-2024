@@ -70,9 +70,10 @@ def skew(x):
     Необходимо вернуть значение коэффициента асимметрии, округленное до 2 знаков после запятой.
     """
     n = len(x)
-    mean_x = np.mean(x)
-    m2 = np.sum((x - mean_x) ** 2) / n 
-    m3 = np.sum((x - mean_x) ** 3) / n  
+    mean_x = sum(x) / n 
+
+    m2 = sum((i - mean_x) ** 2 for i in x) / n  
+    m3 = sum((i - mean_x) ** 3 for i in x) / n 
 
     skew_value = m3 / (m2 ** 1.5)
     return round(skew_value, 2)
@@ -84,10 +85,10 @@ def kurtosis(x):
     Необходимо вернуть значение коэффициента эксцесса, округленное до 2 знаков после запятой.
     """
     n = len(x)
-    mean_x = np.mean(x)
-    m2 = np.sum((x - mean_x) ** 2) / n 
-    m4 = np.sum((x - mean_x) ** 4) / n
+    x_mean = sum(x) / n 
+
+    m2 = sum((i - x_mean) ** 2 for i in x) / n 
+    m4 = sum((i - x_mean) ** 4 for i in x) / n 
 
     kurtosis_value = m4 / (m2 ** 2) - 3
     return round(kurtosis_value, 2)
-
