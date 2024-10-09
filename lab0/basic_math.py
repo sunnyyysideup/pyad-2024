@@ -90,3 +90,4 @@ def kurtosis(x):
 
     kurtosis_value = m4 / (m2 ** 2) - 3
     return round(kurtosis_value, 2)
+
